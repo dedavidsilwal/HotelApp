@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelApp.Hotels;
 using HotelApp.Users;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
@@ -26,6 +27,7 @@ namespace HotelApp.EntityFrameworkCore
          * Also map them inside HotelAppDbContextModelCreatingExtensions.ConfigureHotelApp
          */
 
+        public DbSet<Hotel> Hotels { get; set; }
         public HotelAppDbContext(DbContextOptions<HotelAppDbContext> options)
             : base(options)
         {
@@ -38,10 +40,9 @@ namespace HotelApp.EntityFrameworkCore
 
             /* Configure the shared tables (with included modules) here */
 
-            builder.Entity<AppUser>(b =>
-            {
+            builder.Entity<AppUser>(b => {
                 b.ToTable(AbpIdentityDbProperties.DbTablePrefix + "Users"); //Sharing the same table "AbpUsers" with the IdentityUser
-                
+
                 b.ConfigureByConvention();
                 b.ConfigureAbpUser();
 

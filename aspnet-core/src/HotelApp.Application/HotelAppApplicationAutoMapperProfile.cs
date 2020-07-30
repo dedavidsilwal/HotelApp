@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelApp.Hotels;
 
 namespace HotelApp
 {
@@ -9,6 +10,9 @@ namespace HotelApp
             /* You can configure your AutoMapper mapping configuration here.
              * Alternatively, you can split your mapping configurations
              * into multiple profile classes for a better organization. */
+
+            CreateMap<Hotel, HotelDto>();
+            CreateMap<CreateUpdateHotelDto, HotelDto>();
         }
     }
 }

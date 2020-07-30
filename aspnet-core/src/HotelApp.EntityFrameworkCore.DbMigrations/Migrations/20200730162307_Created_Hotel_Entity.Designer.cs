@@ -4,15 +4,17 @@ using HotelApp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace HotelApp.Migrations
 {
     [DbContext(typeof(HotelAppMigrationsDbContext))]
-    partial class HotelAppMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200730162307_Created_Hotel_Entity")]
+    partial class Created_Hotel_Entity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

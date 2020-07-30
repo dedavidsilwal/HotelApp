@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using HotelApp.Hotels;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 
 namespace HotelApp.EntityFrameworkCore
 {
@@ -11,12 +13,15 @@ namespace HotelApp.EntityFrameworkCore
 
             /* Configure your own tables/entities inside here */
 
-            //builder.Entity<YourEntity>(b =>
-            //{
-            //    b.ToTable(HotelAppConsts.DbTablePrefix + "YourEntities", HotelAppConsts.DbSchema);
-            //    b.ConfigureByConvention(); //auto configure for the base class props
-            //    //...
-            //});
+            builder.Entity<Hotel>(b => {
+                b.ToTable(HotelAppConsts.DbTablePrefix + "Hotels", HotelAppConsts.DbSchema);
+                b.ConfigureByConvention(); //auto configure for the base class props
+
+                b.Property(x => x.Name).IsRequired().HasMaxLength(50);
+                b.Property(x => x.Location).IsRequired().HasMaxLength(50);
+
+                //...
+            });
         }
     }
 }
