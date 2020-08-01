@@ -11,8 +11,8 @@ using Volo.Abp.EntityFrameworkCore;
 namespace HotelApp.Migrations
 {
     [DbContext(typeof(HotelAppMigrationsDbContext))]
-    [Migration("20200730162307_Created_Hotel_Entity")]
-    partial class Created_Hotel_Entity
+    [Migration("20200801100424_Created_Hotel_Entity_HotelType")]
+    partial class Created_Hotel_Entity_HotelType
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,43 @@ namespace HotelApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("HotelApp.Hotels.Hotel", b =>
+            modelBuilder.Entity("HotelApp.Hotels.Address", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
+
+                    b.Property<string>("District")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Province")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId")
+                        .IsUnique();
+
+                    b.ToTable("HotelAddresss");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.ContactPerson", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,8 +71,85 @@ namespace HotelApp.Migrations
                         .HasColumnType("nvarchar(40)")
                         .HasMaxLength(40);
 
-                    b.Property<string>("ContactPerson")
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnName("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnName("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Designation")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelContactPerson");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Hotel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("AllowCustomerReviews")
+                        .HasColumnType("bit");
+
+                    b.Property<TimeSpan>("CheckinTime")
+                        .HasColumnType("time");
+
+                    b.Property<TimeSpan>("CheckoutTime")
+                        .HasColumnType("time");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
 
                     b.Property<DateTime>("CreationTime")
                         .HasColumnName("CreationTime")
@@ -46,9 +159,35 @@ namespace HotelApp.Migrations
                         .HasColumnName("CreatorId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("DefaultPicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnName("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnName("DeletionTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("ExtraProperties")
                         .HasColumnName("ExtraProperties")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("HasUserAgreement")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("HotelTypeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("bit");
@@ -61,26 +200,196 @@ namespace HotelApp.Migrations
                         .HasColumnName("LastModifierId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Location")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("ShowOnHomePage")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid?>("TenantId")
+                        .HasColumnName("TenantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("UserAgreementText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelTypeId")
+                        .IsUnique();
+
+                    b.ToTable("Hotels");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.HotelType", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(120)")
+                        .HasMaxLength(120);
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnName("TenantId")
+                    b.HasKey("Id");
+
+                    b.ToTable("HotelTypes");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Location", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<double>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Longitude")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Hotels");
+                    b.HasIndex("HotelId")
+                        .IsUnique();
+
+                    b.ToTable("HotelLocations");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Room", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("BedType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Capacity")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .HasColumnName("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(40)")
+                        .HasMaxLength(40);
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnName("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnName("CreatorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("DefaultPicture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnName("DeleterId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnName("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ExtraProperties")
+                        .HasColumnName("ExtraProperties")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsBooked")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("IsDeleted")
+                        .HasColumnType("bit")
+                        .HasDefaultValue(false);
+
+                    b.Property<bool?>("IsSmoking")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnName("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnName("LastModifierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("MaxNoOfChildren")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelRoom");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>
@@ -1753,6 +2062,49 @@ namespace HotelApp.Migrations
                     b.HasKey("TenantId", "Name");
 
                     b.ToTable("AbpTenantConnectionStrings");
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Address", b =>
+                {
+                    b.HasOne("HotelApp.Hotels.Hotel", "Hotel")
+                        .WithOne("Address")
+                        .HasForeignKey("HotelApp.Hotels.Address", "HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.ContactPerson", b =>
+                {
+                    b.HasOne("HotelApp.Hotels.Hotel", "Hotel")
+                        .WithMany("ContactPeoples")
+                        .HasForeignKey("HotelId")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Hotel", b =>
+                {
+                    b.HasOne("HotelApp.Hotels.HotelType", "HotelType")
+                        .WithOne("Hotel")
+                        .HasForeignKey("HotelApp.Hotels.Hotel", "HotelTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Location", b =>
+                {
+                    b.HasOne("HotelApp.Hotels.Hotel", "Hotel")
+                        .WithOne("Location")
+                        .HasForeignKey("HotelApp.Hotels.Location", "HotelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("HotelApp.Hotels.Room", b =>
+                {
+                    b.HasOne("HotelApp.Hotels.Hotel", "Hotel")
+                        .WithMany("Rooms")
+                        .HasForeignKey("HotelId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLogAction", b =>

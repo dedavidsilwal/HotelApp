@@ -11,8 +11,14 @@ namespace HotelApp.Permissions
             var myGroup = context.AddGroup(HotelAppPermissions.GroupName);
 
             //Define your own permissions here. Example:
-            //myGroup.AddPermission(HotelAppPermissions.MyPermission1, L("Permission:MyPermission1"));
-        }
+
+            var hotelsPermission = myGroup.AddPermission(HotelAppPermissions.Hotels.Default, L("Permission:Hotels"));
+            hotelsPermission.AddChild(HotelAppPermissions.Hotels.Create, L("Permission:Hotels.Create"));
+            hotelsPermission.AddChild(HotelAppPermissions.Hotels.Edit, L("Permission:Hotels.Edit"));
+            hotelsPermission.AddChild(HotelAppPermissions.Hotels.Delete, L("Permission:Hotels.Delete"));
+
+
+       }
 
         private static LocalizableString L(string name)
         {

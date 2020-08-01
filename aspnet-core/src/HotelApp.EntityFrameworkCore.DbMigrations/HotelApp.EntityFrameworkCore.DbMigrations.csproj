@@ -8,6 +8,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20200730162307_Created_Hotel_Entity.cs" />
+    <Compile Remove="Migrations\20200730162307_Created_Hotel_Entity.Designer.cs" />
+    <Compile Remove="Migrations\20200801070254_Created_Hotel_SubEntity.cs" />
+    <Compile Remove="Migrations\20200801070254_Created_Hotel_SubEntity.Designer.cs" />
+    <Compile Remove="Migrations\20200801070715_Created_Room_Entity.cs" />
+    <Compile Remove="Migrations\20200801070715_Created_Room_Entity.Designer.cs" />
+    <Compile Remove="Migrations\20200801074525_Created_Room_Entity_Alter.cs" />
+    <Compile Remove="Migrations\20200801074525_Created_Room_Entity_Alter.Designer.cs" />
+    <Compile Remove="Migrations\20200801082408_Created_Hotel_Entity.cs" />
+    <Compile Remove="Migrations\20200801082408_Created_Hotel_Entity.Designer.cs" />
+    <Compile Remove="Migrations\20200801082958_Created_Hotel_Entity.cs" />
+    <Compile Remove="Migrations\20200801082958_Created_Hotel_Entity.Designer.cs" />
+    <Compile Remove="Migrations\20200801085045_Created_Hotel_Entity.cs" />
+    <Compile Remove="Migrations\20200801085045_Created_Hotel_Entity.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\HotelApp.EntityFrameworkCore\HotelApp.EntityFrameworkCore.csproj" />
   </ItemGroup>
 

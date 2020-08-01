@@ -4,12 +4,17 @@
     "Menu:Home": "Home",
     "Welcome": "Welcome",
     "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
-    "Menu:Hotels": "Hotel",
+    "Menu:Hotels": "Hotels",
     "Actions": "Actions",
     "Close": "Close",
     "Delete": "Delete",
     "Edit": "Edit",
     "Name": "Name",
-    "NewHotel": "New hotel"
+    "NewHotel": "New hotel",
+    "Permission:HotelApp": "Hotel Management",
+    "Permission:Hotels": "Hotels",
+    "Permission:Hotels.Create": "Creating new hotel",
+    "Permission:Hotels.Edit": "Editing the hotel",
+    "Permission:Hotels.Delete": "Deleting the hotel"
   }
 }

@@ -12,7 +12,10 @@ namespace HotelApp
              * into multiple profile classes for a better organization. */
 
             CreateMap<Hotel, HotelDto>();
-            CreateMap<CreateUpdateHotelDto, HotelDto>();
+            CreateMap<CreateUpdateHotelDto, Hotel>();
+            CreateMap<HotelAddressDto, Address>();
+            CreateMap<HotelLocationDto, Location>();
+            CreateMap<HotelTypeDto, HotelType>();
         }
     }
 }

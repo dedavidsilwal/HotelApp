@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HotelApp.Hotels
 {
-    public enum HotelType
+
+    public class HotelConsts
     {
-        Undefined,
-        Resort
+        public const int MaxNameLength = 50;
 
     }
 }

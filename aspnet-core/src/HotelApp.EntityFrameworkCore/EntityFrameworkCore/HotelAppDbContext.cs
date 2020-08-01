@@ -23,11 +23,23 @@ namespace HotelApp.EntityFrameworkCore
     {
         public DbSet<AppUser> Users { get; set; }
 
+
         /* Add DbSet properties for your Aggregate Roots / Entities here.
          * Also map them inside HotelAppDbContextModelCreatingExtensions.ConfigureHotelApp
          */
 
         public DbSet<Hotel> Hotels { get; set; }
+        public DbSet<HotelType> HotelTypes { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<ContactPerson> ContactPeople { get; set; }
+        public DbSet<Room> Rooms { get; set; }
+
+        //   public DbSet<HotelService> HotelServices { get; set; }
+        //public DbSet<RoomService> RoomServices { get; set; }
+        //   public DbSet<ConferenceRoom> ConferenceRooms { get; set; }
+
+
         public HotelAppDbContext(DbContextOptions<HotelAppDbContext> options)
             : base(options)
         {

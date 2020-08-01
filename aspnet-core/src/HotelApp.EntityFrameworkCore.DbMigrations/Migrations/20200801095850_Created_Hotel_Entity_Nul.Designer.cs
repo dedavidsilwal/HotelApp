@@ -4,15 +4,17 @@ using HotelApp.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace HotelApp.Migrations
 {
     [DbContext(typeof(HotelAppMigrationsDbContext))]
-    partial class HotelAppMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200801095850_Created_Hotel_Entity_Nul")]
+    partial class Created_Hotel_Entity_Nul
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,9 +180,6 @@ namespace HotelApp.Migrations
                     b.Property<bool>("HasUserAgreement")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("HotelTypeId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
                         .HasColumnName("IsDeleted")
@@ -221,9 +220,6 @@ namespace HotelApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HotelTypeId")
-                        .IsUnique();
-
                     b.ToTable("Hotels");
                 });
 
@@ -256,6 +252,9 @@ namespace HotelApp.Migrations
                         .HasColumnName("ExtraProperties")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("HotelId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime?>("LastModificationTime")
                         .HasColumnName("LastModificationTime")
                         .HasColumnType("datetime2");
@@ -270,6 +269,10 @@ namespace HotelApp.Migrations
                         .HasMaxLength(50);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("HotelId")
+                        .IsUnique()
+                        .HasFilter("[HotelId] IS NOT NULL");
 
                     b.ToTable("HotelTypes");
                 });
@@ -2079,13 +2082,11 @@ namespace HotelApp.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("HotelApp.Hotels.Hotel", b =>
+            modelBuilder.Entity("HotelApp.Hotels.HotelType", b =>
                 {
-                    b.HasOne("HotelApp.Hotels.HotelType", "HotelType")
-                        .WithOne("Hotel")
-                        .HasForeignKey("HotelApp.Hotels.Hotel", "HotelTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("HotelApp.Hotels.Hotel", "Hotel")
+                        .WithOne("HotelType")
+                        .HasForeignKey("HotelApp.Hotels.HotelType", "HotelId");
                 });
 
             modelBuilder.Entity("HotelApp.Hotels.Location", b =>

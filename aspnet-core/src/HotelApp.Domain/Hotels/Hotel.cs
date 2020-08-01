@@ -1,32 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 using Volo.Abp.MultiTenancy;
 
 namespace HotelApp.Hotels
 {
-    public class Hotel : AuditedAggregateRoot<Guid>, IMultiTenant
+
+    public class Hotel : FullAuditedAggregateRoot<Guid>, IMultiTenant
     {
         public Guid? TenantId { get; set; }
 
 
         public string Name { get; set; }
-        public string Location { get; set; }
+        public string ShortDescription { get; set; }
+        public string FullDescription { get; set; }
+
+        public bool ShowOnHomePage { get; set; }
+
+        //float
+        public int Rating { get; set; }
+
+
+        public string DefaultPicture { get; set; }
+        public bool AllowCustomerReviews { get; set; }
+
+
+        public IEnumerable<ContactPerson> ContactPeoples { get; set; }
+        public IEnumerable<Room> Rooms { get; set; }
+
+        public bool HasUserAgreement { get; set; }
+        public string UserAgreementText { get; set; }
+
+
+        public TimeSpan CheckinTime { get; set; }
+        public TimeSpan CheckoutTime { get; set; }
 
 
         public bool IsEnabled { get; set; }
-        public HotelType Type { get; set; }
 
 
-        public string ContactPerson { get; set; }
+        public Address Address { get; set; }
+        public Location Location { get; set; }
 
-    }
+        public Guid HotelTypeId { get; set; }
 
-    public class ContactPerson
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public string Designation { get; set; }
+        public HotelType HotelType { get; set; }
+
     }
 }
