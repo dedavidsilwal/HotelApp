@@ -15,7 +15,7 @@ namespace HotelApp.Hotels
         private readonly IRepository<Address, Guid> _addressRepository;
         private readonly IAsyncQueryableExecuter _asyncExecuter;
 
-        public HotelAppService(
+        public HotelAppService( 
             IRepository<Hotel, Guid> hotelRepository,
             IRepository<Address, Guid> addressRepository,
             IAsyncQueryableExecuter asyncExecuter
@@ -33,15 +33,7 @@ namespace HotelApp.Hotels
             _asyncExecuter = asyncExecuter;
         }
 
-        public async Task<List<string>> GetSearchHotelLocationAsync(string searchTerm)
-        {
-            var query = _addressRepository
-                .WhereIf(!searchTerm.IsNullOrEmpty(), a => a.City.Contains(searchTerm))
-                .Select(s => s.City).OrderBy(s => s);
 
-            return await _asyncExecuter.ToListAsync(query);
-
-        }
 
 
         //public async Task<CreateUpdateHotelDto> GetEditEntityByIdAsync(Guid id)
