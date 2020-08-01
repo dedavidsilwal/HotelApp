@@ -1,5 +1,6 @@
 ﻿using HotelApp.Permissions;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
@@ -32,13 +33,13 @@ namespace HotelApp.Hotels
             _asyncExecuter = asyncExecuter;
         }
 
-        public async Task<string[]> GetSearchHotelLocationAsync(string searchTerm)
+        public async Task<List<string>> GetSearchHotelLocationAsync(string searchTerm)
         {
             var query = _addressRepository
                 .WhereIf(!searchTerm.IsNullOrEmpty(), a => a.City.Contains(searchTerm))
                 .Select(s => s.City).OrderBy(s => s);
 
-            return await _asyncExecuter.ToArrayAsync(query);
+            return await _asyncExecuter.ToListAsync(query);
 
         }
 

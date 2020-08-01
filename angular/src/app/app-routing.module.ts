@@ -27,11 +27,10 @@ const routes: Routes = [
       import('@abp/ng.setting-management').then((m) => m.SettingManagementModule.forLazy()),
   },
   { path: 'hotels', loadChildren: () => import('./hotel/hotel.module').then(m => m.HotelModule) },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

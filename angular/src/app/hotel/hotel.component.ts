@@ -63,7 +63,7 @@ export class HotelComponent implements OnInit {
       showOnHomePage: [this.selectedHotel.name || false, Validators.required],
       isEnabled: [this.selectedHotel.isEnabled || true, Validators.required],
       // allowCustomerReviews: [this.selectedHotel.allowCustomerReviews || true, Validators.required],
-      defaultPicture: [this.selectedHotel.defaultPicture || '', Validators.required],
+      defaultPicture: [this.selectedHotel.defaultPicture || ''],
     });
   }
 

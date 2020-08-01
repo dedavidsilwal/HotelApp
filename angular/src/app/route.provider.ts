@@ -22,6 +22,13 @@ function configureRoutes(routes: RoutesService) {
         order: 2,
         layout: eLayoutType.application,
       },
+      {
+        path: '/hotels/hoteltypes',
+        name: '::Menu:HotelTypes',
+        iconClass: 'fas fa-book',
+        order: 2,
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }

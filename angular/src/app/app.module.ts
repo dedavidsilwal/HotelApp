@@ -13,6 +13,7 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { APP_ROUTE_PROVIDER } from './route.provider';
+import { HoteltypeComponent } from './hoteltype/hoteltype.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,7 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
     NgxsModule.forRoot(),
     ThemeBasicModule.forRoot(),
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, HoteltypeComponent],
   providers: [APP_ROUTE_PROVIDER],
   bootstrap: [AppComponent],
 })

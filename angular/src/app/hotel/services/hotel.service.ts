@@ -1,7 +1,7 @@
 import { RestService , PagedAndSortedResultRequestDto, PagedResultDto} from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CreateUpdateHotelDto, HotelDto} from '../models';
+import {CreateUpdateHotelDto, HotelDto} from '../models';
 
 @Injectable({providedIn: 'root'})
 export class HotelService {
@@ -9,9 +9,8 @@ export class HotelService {
 
   constructor(private restService: RestService) {}
 
- getSearchHotelLocationBySearchTerm(searchTerm: string): Observable<string[]> {
-   return this.restService.request({ url: '/api/app/hotel/searchHotelLocation', method: 'GET', params: { searchTerm } },
-   { apiName: this.apiName });
+ getSearchHotelLocationBySearchTerm(searchTerm: string): Observable<any[]> {
+   return this.restService.request({ url: '/api/app/hotel/searchHotelLocation', method: 'GET', params: { searchTerm } },{ apiName: this.apiName });
  }
  createByInput(body: CreateUpdateHotelDto): Observable<HotelDto> {
    return this.restService.request({ url: '/api/app/hotel', method: 'POST', body },{ apiName: this.apiName });
