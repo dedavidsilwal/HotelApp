@@ -16,6 +16,9 @@ namespace HotelApp
             CreateMap<HotelAddressDto, Address>();
             CreateMap<HotelLocationDto, Location>();
             CreateMap<HotelTypeDto, HotelType>();
+
+            CreateMap<Room, RoomDto>();
+            CreateMap<CreateUpdateRoomDto, Room>();
         }
     }
 }

@@ -706,18 +706,18 @@ var abp = abp || {};
 
     var toLocal = function (date) {
         return new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate(),
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds()
+            date.getUTCFullYear(),
+            date.getUTCMonth(),
+            date.getUTCDate(),
+            date.getUTCHours(),
+            date.getUTCMinutes(),
+            date.getUTCSeconds(),
+            date.getUTCMilliseconds()
         );
     };
 
     var toUtc = function (date) {
-        return Date.UTC(
+        Date.UTC(
             date.getUTCFullYear(),
             date.getUTCMonth(),
             date.getUTCDate(),

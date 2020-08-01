@@ -1,17 +1,15 @@
 ﻿using System;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
 
 namespace HotelApp.Hotels
 {
-    public class Room : FullAuditedAggregateRoot<Guid>
+    public class RoomDto : AuditedEntityDto<Guid>
     {
         public string Name { get; set; }
         public string Description { get; set; }
         public int Capacity { get; set; }
         public int MaxNoOfChildren { get; set; }
         public string DefaultPicture { get; set; }
-
-        //roomno
 
         public decimal Price { get; set; }
 
@@ -21,9 +19,6 @@ namespace HotelApp.Hotels
         public bool IsBooked { get; set; }
 
         public Guid HotelId { get; set; }
-        public Hotel Hotel { get; set; }
-
+        public HotelDto Hotel { get; set; }
     }
-
-
 }
