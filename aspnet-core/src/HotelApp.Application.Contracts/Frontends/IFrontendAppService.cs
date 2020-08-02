@@ -1,10 +1,11 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Frontends
 {
     public interface IFrontendAppService : IApplicationService
     {

@@ -1,4 +1,4 @@
-﻿namespace HotelApp.Hotels
+﻿namespace HotelApp.Frontends
 {
     public class HotelSearchResultDto
     {

@@ -3,7 +3,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Rooms
 {
     public class RoomAppService : CrudAppService<Room, RoomDto, Guid, PagedAndSortedResultRequestDto, CreateUpdateRoomDto>
     {

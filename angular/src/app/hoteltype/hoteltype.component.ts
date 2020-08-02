@@ -19,8 +19,9 @@ export class HoteltypeComponent implements OnInit {
 
   isModalOpen = false; // add this line
 
+  list: any[];
+
   constructor(
-    public readonly list: ListService,
     private fb: FormBuilder,
     private confirmation: ConfirmationService
   ) { }

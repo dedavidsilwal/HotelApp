@@ -1,8 +1,9 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 using System.Collections.Generic;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Rooms
 {
     public class RoomType : AuditedAggregateRoot<Guid>
     {

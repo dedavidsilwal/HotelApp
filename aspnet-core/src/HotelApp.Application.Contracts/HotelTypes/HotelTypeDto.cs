@@ -1,7 +1,8 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 using Volo.Abp.Application.Dtos;
 
-namespace HotelApp.Hotels
+namespace HotelApp.HotelTypes
 {
     public class HotelTypeDto : EntityDto<Guid>
     {

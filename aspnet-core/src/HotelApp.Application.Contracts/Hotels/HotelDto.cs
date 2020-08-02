@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelApp.HotelTypes;
+using System;
 using Volo.Abp.Application.Dtos;
 
 namespace HotelApp.Hotels

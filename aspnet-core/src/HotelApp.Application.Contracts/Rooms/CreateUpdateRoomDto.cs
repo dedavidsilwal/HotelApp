@@ -1,6 +1,7 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Rooms
 {
     public class CreateUpdateRoomDto
     {

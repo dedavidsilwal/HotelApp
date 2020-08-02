@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Application.Dtos;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Frontends
 {
     public class HotelSearchQueryDto : PagedAndSortedResultRequestDto
     {

@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using HotelApp.Hotels;
+using HotelApp.HotelTypes;
+using HotelApp.Rooms;
 
 namespace HotelApp
 {

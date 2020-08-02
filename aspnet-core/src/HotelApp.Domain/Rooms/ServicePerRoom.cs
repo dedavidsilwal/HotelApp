@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Domain.Entities.Auditing;
 
-namespace HotelApp.Hotels
+namespace HotelApp.Rooms
 {
     public class ServicePerRoom : AuditedAggregateRoot<Guid>
     {

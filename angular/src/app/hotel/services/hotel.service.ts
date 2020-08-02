@@ -9,9 +9,6 @@ export class HotelService {
 
   constructor(private restService: RestService) {}
 
- getSearchHotelLocationBySearchTerm(searchTerm: string): Observable<any[]> {
-   return this.restService.request({ url: '/api/app/hotel/searchHotelLocation', method: 'GET', params: { searchTerm } },{ apiName: this.apiName });
- }
  createByInput(body: CreateUpdateHotelDto): Observable<HotelDto> {
    return this.restService.request({ url: '/api/app/hotel', method: 'POST', body },{ apiName: this.apiName });
  }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Dynamic.Core;
@@ -9,7 +10,7 @@ using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Linq;
 
 
-namespace HotelApp.Hotels
+namespace HotelApp.Frontends
 {
     public class FrontendAppService : ApplicationService, IFrontendAppService
     {

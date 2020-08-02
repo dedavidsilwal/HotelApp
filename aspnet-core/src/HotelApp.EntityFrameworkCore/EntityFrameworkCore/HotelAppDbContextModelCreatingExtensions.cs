@@ -1,4 +1,5 @@
 ﻿using HotelApp.Hotels;
+using HotelApp.Rooms;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp;
 using Volo.Abp.EntityFrameworkCore.Modeling;

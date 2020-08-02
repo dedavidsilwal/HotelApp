@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HotelApp.Hotels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,7 @@ using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
 
-namespace HotelApp.Hotels
+namespace HotelApp.HotelTypes
 {
     public class HotelTypeAppService : CrudAppService<HotelType, HotelTypeDto, Guid, PagedAndSortedResultRequestDto, HotelTypeDto>
     {

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using HotelApp.HotelTypes;
+using System.ComponentModel.DataAnnotations;
 
 namespace HotelApp.Hotels
 {
